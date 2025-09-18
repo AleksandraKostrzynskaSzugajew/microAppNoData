@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kafka-pv
+spec:
+  capacity:
+    storage: 10Gi # Ilość miejsca na dane dla Kafki
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /mnt/data/kafka # Lokalizacja na hoście, gdzie będą zapisywane dane
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kafka-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

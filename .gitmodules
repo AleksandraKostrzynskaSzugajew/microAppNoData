@@ -1,0 +1,9 @@
+[submodule "microApp/google-search-adapter"]
+	path = microApp/google-search-adapter
+	url = https://github.com/AleksandraKostrzynskaSzugajew/google-search-adapter.git
+[submodule "microApp/scheduler-service"]
+	path = microApp/scheduler-service
+	url = https://github.com/AleksandraKostrzynskaSzugajew/scheduler-service.git
+[submodule "microApp/search-service"]
+	path = microApp/search-service
+	url = https://github.com/AleksandraKostrzynskaSzugajew/search-service.git

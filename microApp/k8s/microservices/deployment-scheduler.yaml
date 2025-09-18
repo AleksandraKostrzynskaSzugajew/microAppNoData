@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scheduler-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scheduler-service
+  template:
+    metadata:
+      labels:
+        app: scheduler-service
+    spec:
+      containers:
+        - name: scheduler-service
+          image: alekosszu/microapp-scheduler-service:latest
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variables-config
+                  key: DB_PASSWORD
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variables-config
+                  key: DB_URL
+            - name: DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variables-config
+                  key: DB_USERNAME
+            - name: SCHEDULER_FILE_PROCESSING_FIXED_RATE
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variables-config
+                  key: SCHEDULER_FILE_PROCESSING_FIXED_RATE
+            - name: SCHEDULER_RETRY_FILE_PROCESSING_CRON
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variables-config
+                  key: SCHEDULER_RETRY_FILE_PROCESSING_CRON
+            - name: MONGO_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: env-variables-config
+                  key: MONGO_URL
+          ports:
+            - containerPort: 8082
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health/liveness
+#              port: 8082
+#            initialDelaySeconds: 10
+#            periodSeconds: 30
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health/readiness
+#              port: 8082
+#            initialDelaySeconds: 10
+#            periodSeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: scheduler-service
+spec:
+  selector:
+    app: scheduler-service
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+  type: LoadBalancer

@@ -1,0 +1,1 @@
+application has bash script to run k8s - deploy.sh

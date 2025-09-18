@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: zookeeper-pv
+spec:
+  capacity:
+    storage: 5Gi # Ilość miejsca na dane dla Zookeepera
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/zookeeper # Lokalizacja na hoście
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zookeeper-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

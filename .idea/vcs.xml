@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microApp/google-search-adapter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microApp/scheduler-service" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/microApp/search-service" vcs="Git" />
+  </component>
+</project>
