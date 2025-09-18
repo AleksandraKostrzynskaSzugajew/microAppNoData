@@ -3,6 +3,8 @@ A demo microservices-based application built with Java / Spring Boot, using MySQ
 
 Status: Public, scrubbed for sensitive data. This repository contains no real secrets. 
 
+
+
 🚀 Features
 
 Modular microservices:
@@ -24,6 +26,8 @@ Docker Compose for local orchestration.
 Kubernetes manifests for production-like deployment.
 
 Automated builds with Maven + Dockerfiles.
+
+
 
 🧱 Tech Stack
 
